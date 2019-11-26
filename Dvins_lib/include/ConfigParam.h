@@ -6,7 +6,10 @@
 namespace Dvins {
 
 const int WINDOW_SIZE = 10; // 窗口大小
-const int NUM_OF_FEATURE = 1000;
+const int NUM_OF_F = 1000;  // NOTE: 特征点数目
+
+extern double INIT_DEPTH;   // 初始深度
+extern double MIN_PARALLAX; // NOTE:
 
 class ConfigParam {
 public:
