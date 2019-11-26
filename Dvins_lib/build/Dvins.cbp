@@ -1,0 +1,285 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+<CodeBlocks_project_file>
+   <FileVersion major="1" minor="6" />
+   <Project>
+      <Option title="Dvins" />
+      <Option makefile_is_custom="1" />
+      <Option compiler="gcc" />
+      <Option virtualFolders="CMake Files\;CMake Files\..\;CMake Files\..\..\;CMake Files\..\..\..\;CMake Files\..\..\..\..\;CMake Files\..\..\..\..\..\;CMake Files\..\..\..\..\..\..\;CMake Files\..\..\..\..\..\..\usr\;CMake Files\..\..\..\..\..\..\usr\local\;CMake Files\..\..\..\..\..\..\usr\local\share\;CMake Files\..\..\..\..\..\..\usr\local\share\OpenCV\;CMake Files\..\..\..\..\..\..\usr\local\lib\;CMake Files\..\..\..\..\..\..\usr\local\lib\cmake\;CMake Files\..\..\..\..\..\..\usr\local\lib\cmake\Ceres\;CMake Files\..\..\..\..\..\..\usr\lib\;CMake Files\..\..\..\..\..\..\usr\lib\cmake\;CMake Files\..\..\..\..\..\..\usr\lib\cmake\eigen3\;" />
+      <Build>
+      <Target title="all">
+         <Option working_dir="/home/lab202/Code/Test/Dvins/Dvins_lib/build" />
+         <Option type="4" />
+         <MakeCommands>
+            <Build command="/usr/bin/make -f &quot;/home/lab202/Code/Test/Dvins/Dvins_lib/build/Makefile&quot;  VERBOSE=1 all" />
+            <CompileFile command="/usr/bin/make -f &quot;/home/lab202/Code/Test/Dvins/Dvins_lib/build/Makefile&quot;  VERBOSE=1 &quot;$file&quot;" />
+            <Clean command="/usr/bin/make -f &quot;/home/lab202/Code/Test/Dvins/Dvins_lib/build/Makefile&quot;  VERBOSE=1 clean" />
+            <DistClean command="/usr/bin/make -f &quot;/home/lab202/Code/Test/Dvins/Dvins_lib/build/Makefile&quot;  VERBOSE=1 clean" />
+         </MakeCommands>
+      </Target>
+      <Target title="edit_cache">
+         <Option working_dir="/home/lab202/Code/Test/Dvins/Dvins_lib/build" />
+         <Option type="4" />
+         <MakeCommands>
+            <Build command="/usr/bin/make -f &quot;/home/lab202/Code/Test/Dvins/Dvins_lib/build/Makefile&quot;  VERBOSE=1 edit_cache" />
+            <CompileFile command="/usr/bin/make -f &quot;/home/lab202/Code/Test/Dvins/Dvins_lib/build/Makefile&quot;  VERBOSE=1 &quot;$file&quot;" />
+            <Clean command="/usr/bin/make -f &quot;/home/lab202/Code/Test/Dvins/Dvins_lib/build/Makefile&quot;  VERBOSE=1 clean" />
+            <DistClean command="/usr/bin/make -f &quot;/home/lab202/Code/Test/Dvins/Dvins_lib/build/Makefile&quot;  VERBOSE=1 clean" />
+         </MakeCommands>
+      </Target>
+      <Target title="Dvins">
+         <Option output="/home/lab202/Code/Test/Dvins/Dvins_lib/lib/libDvins.so" prefix_auto="0" extension_auto="0" />
+         <Option working_dir="/home/lab202/Code/Test/Dvins/Dvins_lib/build" />
+         <Option object_output="./" />
+         <Option type="3" />
+         <Option compiler="gcc" />
+         <Compiler>
+            <Add option="-DOPENCV_TRAITS_ENABLE_DEPRECATED" />
+            <Add directory="/home/lab202/Code/Test/Dvins/Dvins_lib" />
+            <Add directory="/home/lab202/Code/Test/Dvins/Dvins_lib/include" />
+            <Add directory="/usr/include" />
+            <Add directory="/usr/include/c++/5" />
+            <Add directory="/usr/include/c++/5/backward" />
+            <Add directory="/usr/include/eigen3" />
+            <Add directory="/usr/include/x86_64-linux-gnu" />
+            <Add directory="/usr/include/x86_64-linux-gnu/c++/5" />
+            <Add directory="/usr/lib/gcc/x86_64-linux-gnu/5/include" />
+            <Add directory="/usr/lib/gcc/x86_64-linux-gnu/5/include-fixed" />
+            <Add directory="/usr/local/include" />
+            <Add directory="/usr/local/include/opencv" />
+         </Compiler>
+         <MakeCommands>
+            <Build command="/usr/bin/make -f &quot;/home/lab202/Code/Test/Dvins/Dvins_lib/build/Makefile&quot;  VERBOSE=1 Dvins" />
+            <CompileFile command="/usr/bin/make -f &quot;/home/lab202/Code/Test/Dvins/Dvins_lib/build/Makefile&quot;  VERBOSE=1 &quot;$file&quot;" />
+            <Clean command="/usr/bin/make -f &quot;/home/lab202/Code/Test/Dvins/Dvins_lib/build/Makefile&quot;  VERBOSE=1 clean" />
+            <DistClean command="/usr/bin/make -f &quot;/home/lab202/Code/Test/Dvins/Dvins_lib/build/Makefile&quot;  VERBOSE=1 clean" />
+         </MakeCommands>
+      </Target>
+      <Target title="Dvins/fast">
+         <Option output="/home/lab202/Code/Test/Dvins/Dvins_lib/lib/libDvins.so" prefix_auto="0" extension_auto="0" />
+         <Option working_dir="/home/lab202/Code/Test/Dvins/Dvins_lib/build" />
+         <Option object_output="./" />
+         <Option type="3" />
+         <Option compiler="gcc" />
+         <Compiler>
+            <Add option="-DOPENCV_TRAITS_ENABLE_DEPRECATED" />
+            <Add directory="/home/lab202/Code/Test/Dvins/Dvins_lib" />
+            <Add directory="/home/lab202/Code/Test/Dvins/Dvins_lib/include" />
+            <Add directory="/usr/include" />
+            <Add directory="/usr/include/c++/5" />
+            <Add directory="/usr/include/c++/5/backward" />
+            <Add directory="/usr/include/eigen3" />
+            <Add directory="/usr/include/x86_64-linux-gnu" />
+            <Add directory="/usr/include/x86_64-linux-gnu/c++/5" />
+            <Add directory="/usr/lib/gcc/x86_64-linux-gnu/5/include" />
+            <Add directory="/usr/lib/gcc/x86_64-linux-gnu/5/include-fixed" />
+            <Add directory="/usr/local/include" />
+            <Add directory="/usr/local/include/opencv" />
+         </Compiler>
+         <MakeCommands>
+            <Build command="/usr/bin/make -f &quot;/home/lab202/Code/Test/Dvins/Dvins_lib/build/Makefile&quot;  VERBOSE=1 Dvins/fast" />
+            <CompileFile command="/usr/bin/make -f &quot;/home/lab202/Code/Test/Dvins/Dvins_lib/build/Makefile&quot;  VERBOSE=1 &quot;$file&quot;" />
+            <Clean command="/usr/bin/make -f &quot;/home/lab202/Code/Test/Dvins/Dvins_lib/build/Makefile&quot;  VERBOSE=1 clean" />
+            <DistClean command="/usr/bin/make -f &quot;/home/lab202/Code/Test/Dvins/Dvins_lib/build/Makefile&quot;  VERBOSE=1 clean" />
+         </MakeCommands>
+      </Target>
+      <Target title="run_euroc">
+         <Option output="/home/lab202/Code/Test/Dvins/Dvins_lib/bin/run_euroc" prefix_auto="0" extension_auto="0" />
+         <Option working_dir="/home/lab202/Code/Test/Dvins/Dvins_lib/bin" />
+         <Option object_output="./" />
+         <Option type="1" />
+         <Option compiler="gcc" />
+         <Compiler>
+            <Add option="-DOPENCV_TRAITS_ENABLE_DEPRECATED" />
+            <Add directory="/home/lab202/Code/Test/Dvins/Dvins_lib" />
+            <Add directory="/home/lab202/Code/Test/Dvins/Dvins_lib/include" />
+            <Add directory="/usr/include" />
+            <Add directory="/usr/include/c++/5" />
+            <Add directory="/usr/include/c++/5/backward" />
+            <Add directory="/usr/include/eigen3" />
+            <Add directory="/usr/include/x86_64-linux-gnu" />
+            <Add directory="/usr/include/x86_64-linux-gnu/c++/5" />
+            <Add directory="/usr/lib/gcc/x86_64-linux-gnu/5/include" />
+            <Add directory="/usr/lib/gcc/x86_64-linux-gnu/5/include-fixed" />
+            <Add directory="/usr/local/include" />
+            <Add directory="/usr/local/include/opencv" />
+         </Compiler>
+         <MakeCommands>
+            <Build command="/usr/bin/make -f &quot;/home/lab202/Code/Test/Dvins/Dvins_lib/build/Makefile&quot;  VERBOSE=1 run_euroc" />
+            <CompileFile command="/usr/bin/make -f &quot;/home/lab202/Code/Test/Dvins/Dvins_lib/build/Makefile&quot;  VERBOSE=1 &quot;$file&quot;" />
+            <Clean command="/usr/bin/make -f &quot;/home/lab202/Code/Test/Dvins/Dvins_lib/build/Makefile&quot;  VERBOSE=1 clean" />
+            <DistClean command="/usr/bin/make -f &quot;/home/lab202/Code/Test/Dvins/Dvins_lib/build/Makefile&quot;  VERBOSE=1 clean" />
+         </MakeCommands>
+      </Target>
+      <Target title="run_euroc/fast">
+         <Option output="/home/lab202/Code/Test/Dvins/Dvins_lib/bin/run_euroc" prefix_auto="0" extension_auto="0" />
+         <Option working_dir="/home/lab202/Code/Test/Dvins/Dvins_lib/bin" />
+         <Option object_output="./" />
+         <Option type="1" />
+         <Option compiler="gcc" />
+         <Compiler>
+            <Add option="-DOPENCV_TRAITS_ENABLE_DEPRECATED" />
+            <Add directory="/home/lab202/Code/Test/Dvins/Dvins_lib" />
+            <Add directory="/home/lab202/Code/Test/Dvins/Dvins_lib/include" />
+            <Add directory="/usr/include" />
+            <Add directory="/usr/include/c++/5" />
+            <Add directory="/usr/include/c++/5/backward" />
+            <Add directory="/usr/include/eigen3" />
+            <Add directory="/usr/include/x86_64-linux-gnu" />
+            <Add directory="/usr/include/x86_64-linux-gnu/c++/5" />
+            <Add directory="/usr/lib/gcc/x86_64-linux-gnu/5/include" />
+            <Add directory="/usr/lib/gcc/x86_64-linux-gnu/5/include-fixed" />
+            <Add directory="/usr/local/include" />
+            <Add directory="/usr/local/include/opencv" />
+         </Compiler>
+         <MakeCommands>
+            <Build command="/usr/bin/make -f &quot;/home/lab202/Code/Test/Dvins/Dvins_lib/build/Makefile&quot;  VERBOSE=1 run_euroc/fast" />
+            <CompileFile command="/usr/bin/make -f &quot;/home/lab202/Code/Test/Dvins/Dvins_lib/build/Makefile&quot;  VERBOSE=1 &quot;$file&quot;" />
+            <Clean command="/usr/bin/make -f &quot;/home/lab202/Code/Test/Dvins/Dvins_lib/build/Makefile&quot;  VERBOSE=1 clean" />
+            <DistClean command="/usr/bin/make -f &quot;/home/lab202/Code/Test/Dvins/Dvins_lib/build/Makefile&quot;  VERBOSE=1 clean" />
+         </MakeCommands>
+      </Target>
+      <Target title="test_module">
+         <Option output="/home/lab202/Code/Test/Dvins/Dvins_lib/bin/test_module" prefix_auto="0" extension_auto="0" />
+         <Option working_dir="/home/lab202/Code/Test/Dvins/Dvins_lib/bin" />
+         <Option object_output="./" />
+         <Option type="1" />
+         <Option compiler="gcc" />
+         <Compiler>
+            <Add option="-DOPENCV_TRAITS_ENABLE_DEPRECATED" />
+            <Add directory="/home/lab202/Code/Test/Dvins/Dvins_lib" />
+            <Add directory="/home/lab202/Code/Test/Dvins/Dvins_lib/include" />
+            <Add directory="/usr/include" />
+            <Add directory="/usr/include/c++/5" />
+            <Add directory="/usr/include/c++/5/backward" />
+            <Add directory="/usr/include/eigen3" />
+            <Add directory="/usr/include/x86_64-linux-gnu" />
+            <Add directory="/usr/include/x86_64-linux-gnu/c++/5" />
+            <Add directory="/usr/lib/gcc/x86_64-linux-gnu/5/include" />
+            <Add directory="/usr/lib/gcc/x86_64-linux-gnu/5/include-fixed" />
+            <Add directory="/usr/local/include" />
+            <Add directory="/usr/local/include/opencv" />
+         </Compiler>
+         <MakeCommands>
+            <Build command="/usr/bin/make -f &quot;/home/lab202/Code/Test/Dvins/Dvins_lib/build/Makefile&quot;  VERBOSE=1 test_module" />
+            <CompileFile command="/usr/bin/make -f &quot;/home/lab202/Code/Test/Dvins/Dvins_lib/build/Makefile&quot;  VERBOSE=1 &quot;$file&quot;" />
+            <Clean command="/usr/bin/make -f &quot;/home/lab202/Code/Test/Dvins/Dvins_lib/build/Makefile&quot;  VERBOSE=1 clean" />
+            <DistClean command="/usr/bin/make -f &quot;/home/lab202/Code/Test/Dvins/Dvins_lib/build/Makefile&quot;  VERBOSE=1 clean" />
+         </MakeCommands>
+      </Target>
+      <Target title="test_module/fast">
+         <Option output="/home/lab202/Code/Test/Dvins/Dvins_lib/bin/test_module" prefix_auto="0" extension_auto="0" />
+         <Option working_dir="/home/lab202/Code/Test/Dvins/Dvins_lib/bin" />
+         <Option object_output="./" />
+         <Option type="1" />
+         <Option compiler="gcc" />
+         <Compiler>
+            <Add option="-DOPENCV_TRAITS_ENABLE_DEPRECATED" />
+            <Add directory="/home/lab202/Code/Test/Dvins/Dvins_lib" />
+            <Add directory="/home/lab202/Code/Test/Dvins/Dvins_lib/include" />
+            <Add directory="/usr/include" />
+            <Add directory="/usr/include/c++/5" />
+            <Add directory="/usr/include/c++/5/backward" />
+            <Add directory="/usr/include/eigen3" />
+            <Add directory="/usr/include/x86_64-linux-gnu" />
+            <Add directory="/usr/include/x86_64-linux-gnu/c++/5" />
+            <Add directory="/usr/lib/gcc/x86_64-linux-gnu/5/include" />
+            <Add directory="/usr/lib/gcc/x86_64-linux-gnu/5/include-fixed" />
+            <Add directory="/usr/local/include" />
+            <Add directory="/usr/local/include/opencv" />
+         </Compiler>
+         <MakeCommands>
+            <Build command="/usr/bin/make -f &quot;/home/lab202/Code/Test/Dvins/Dvins_lib/build/Makefile&quot;  VERBOSE=1 test_module/fast" />
+            <CompileFile command="/usr/bin/make -f &quot;/home/lab202/Code/Test/Dvins/Dvins_lib/build/Makefile&quot;  VERBOSE=1 &quot;$file&quot;" />
+            <Clean command="/usr/bin/make -f &quot;/home/lab202/Code/Test/Dvins/Dvins_lib/build/Makefile&quot;  VERBOSE=1 clean" />
+            <DistClean command="/usr/bin/make -f &quot;/home/lab202/Code/Test/Dvins/Dvins_lib/build/Makefile&quot;  VERBOSE=1 clean" />
+         </MakeCommands>
+      </Target>
+      <Target title="rebuild_cache">
+         <Option working_dir="/home/lab202/Code/Test/Dvins/Dvins_lib/build" />
+         <Option type="4" />
+         <MakeCommands>
+            <Build command="/usr/bin/make -f &quot;/home/lab202/Code/Test/Dvins/Dvins_lib/build/Makefile&quot;  VERBOSE=1 rebuild_cache" />
+            <CompileFile command="/usr/bin/make -f &quot;/home/lab202/Code/Test/Dvins/Dvins_lib/build/Makefile&quot;  VERBOSE=1 &quot;$file&quot;" />
+            <Clean command="/usr/bin/make -f &quot;/home/lab202/Code/Test/Dvins/Dvins_lib/build/Makefile&quot;  VERBOSE=1 clean" />
+            <DistClean command="/usr/bin/make -f &quot;/home/lab202/Code/Test/Dvins/Dvins_lib/build/Makefile&quot;  VERBOSE=1 clean" />
+         </MakeCommands>
+      </Target>
+      </Build>
+      <Unit filename="/home/lab202/Code/Test/Dvins/Dvins_lib/Test/run_euroc.cc">
+         <Option target="run_euroc"/>
+      </Unit>
+      <Unit filename="/home/lab202/Code/Test/Dvins/Dvins_lib/Test/test_module.cc">
+         <Option target="test_module"/>
+      </Unit>
+      <Unit filename="/home/lab202/Code/Test/Dvins/Dvins_lib/src/ConfigParam.cc">
+         <Option target="Dvins"/>
+      </Unit>
+      <Unit filename="/home/lab202/Code/Test/Dvins/Dvins_lib/src/FeatureTracker.cc">
+         <Option target="Dvins"/>
+      </Unit>
+      <Unit filename="/home/lab202/Code/Test/Dvins/Dvins_lib/src/Frame.cc">
+         <Option target="Dvins"/>
+      </Unit>
+      <Unit filename="/home/lab202/Code/Test/Dvins/Dvins_lib/src/ImuData.cc">
+         <Option target="Dvins"/>
+      </Unit>
+      <Unit filename="/home/lab202/Code/Test/Dvins/Dvins_lib/src/Initializer.cc">
+         <Option target="Dvins"/>
+      </Unit>
+      <Unit filename="/home/lab202/Code/Test/Dvins/Dvins_lib/src/KeyFrame.cc">
+         <Option target="Dvins"/>
+      </Unit>
+      <Unit filename="/home/lab202/Code/Test/Dvins/Dvins_lib/src/Optimizer.cc">
+         <Option target="Dvins"/>
+      </Unit>
+      <Unit filename="/home/lab202/Code/Test/Dvins/Dvins_lib/src/System.cc">
+         <Option target="Dvins"/>
+      </Unit>
+      <Unit filename="/home/lab202/Code/Test/Dvins/Dvins_lib/src/Tracking.cc">
+         <Option target="Dvins"/>
+      </Unit>
+      <Unit filename="/home/lab202/Code/Test/Dvins/Dvins_lib/CMakeLists.txt">
+          <Option virtualFolder="CMake Files\" />
+      </Unit>
+      <Unit filename="/home/lab202/Code/Test/Dvins/Dvins_lib/../../../../../../usr/local/share/OpenCV/OpenCVConfig-version.cmake">
+          <Option virtualFolder="CMake Files\..\..\..\..\..\..\usr\local\share\OpenCV\" />
+      </Unit>
+      <Unit filename="/home/lab202/Code/Test/Dvins/Dvins_lib/../../../../../../usr/local/share/OpenCV/OpenCVConfig.cmake">
+          <Option virtualFolder="CMake Files\..\..\..\..\..\..\usr\local\share\OpenCV\" />
+      </Unit>
+      <Unit filename="/home/lab202/Code/Test/Dvins/Dvins_lib/../../../../../../usr/local/share/OpenCV/OpenCVModules.cmake">
+          <Option virtualFolder="CMake Files\..\..\..\..\..\..\usr\local\share\OpenCV\" />
+      </Unit>
+      <Unit filename="/home/lab202/Code/Test/Dvins/Dvins_lib/../../../../../../usr/local/share/OpenCV/OpenCVModules-release.cmake">
+          <Option virtualFolder="CMake Files\..\..\..\..\..\..\usr\local\share\OpenCV\" />
+      </Unit>
+      <Unit filename="/home/lab202/Code/Test/Dvins/Dvins_lib/../../../../../../usr/local/lib/cmake/Ceres/CeresConfigVersion.cmake">
+          <Option virtualFolder="CMake Files\..\..\..\..\..\..\usr\local\lib\cmake\Ceres\" />
+      </Unit>
+      <Unit filename="/home/lab202/Code/Test/Dvins/Dvins_lib/../../../../../../usr/local/lib/cmake/Ceres/CeresConfig.cmake">
+          <Option virtualFolder="CMake Files\..\..\..\..\..\..\usr\local\lib\cmake\Ceres\" />
+      </Unit>
+      <Unit filename="/home/lab202/Code/Test/Dvins/Dvins_lib/../../../../../../usr/local/lib/cmake/Ceres/FindEigen.cmake">
+          <Option virtualFolder="CMake Files\..\..\..\..\..\..\usr\local\lib\cmake\Ceres\" />
+      </Unit>
+      <Unit filename="/home/lab202/Code/Test/Dvins/Dvins_lib/../../../../../../usr/local/lib/cmake/Ceres/FindGlog.cmake">
+          <Option virtualFolder="CMake Files\..\..\..\..\..\..\usr\local\lib\cmake\Ceres\" />
+      </Unit>
+      <Unit filename="/home/lab202/Code/Test/Dvins/Dvins_lib/../../../../../../usr/local/lib/cmake/Ceres/FindGflags.cmake">
+          <Option virtualFolder="CMake Files\..\..\..\..\..\..\usr\local\lib\cmake\Ceres\" />
+      </Unit>
+      <Unit filename="/home/lab202/Code/Test/Dvins/Dvins_lib/../../../../../../usr/local/lib/cmake/Ceres/CeresTargets.cmake">
+          <Option virtualFolder="CMake Files\..\..\..\..\..\..\usr\local\lib\cmake\Ceres\" />
+      </Unit>
+      <Unit filename="/home/lab202/Code/Test/Dvins/Dvins_lib/../../../../../../usr/local/lib/cmake/Ceres/CeresTargets-release.cmake">
+          <Option virtualFolder="CMake Files\..\..\..\..\..\..\usr\local\lib\cmake\Ceres\" />
+      </Unit>
+      <Unit filename="/home/lab202/Code/Test/Dvins/Dvins_lib/../../../../../../usr/lib/cmake/eigen3/Eigen3Config.cmake">
+          <Option virtualFolder="CMake Files\..\..\..\..\..\..\usr\lib\cmake\eigen3\" />
+      </Unit>
+      <Unit filename="/home/lab202/Code/Test/Dvins/Dvins_lib/../../../../../../usr/lib/cmake/eigen3/Eigen3Config.cmake">
+          <Option virtualFolder="CMake Files\..\..\..\..\..\..\usr\lib\cmake\eigen3\" />
+      </Unit>
+   </Project>
+</CodeBlocks_project_file>
