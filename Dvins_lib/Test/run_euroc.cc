@@ -351,7 +351,7 @@ void ReceiveImu() {
 void ReceiveImg() {
   LOG(INFO) << "开始接收图像数据" << endl;
   while (1) {
-    if (pParams->msensor == Dvins::ConfigParam::STEREO) {
+    if (Dvins::SENSOR == Dvins::STEREO) {
       //            LOG(INFO) << "双目模式" << endl;
       cv::Mat img0, img1;
       double timeStamp = 0;

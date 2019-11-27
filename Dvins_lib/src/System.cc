@@ -12,7 +12,7 @@ System::~System() { LOG(INFO) << "~System()" << endl; }
 
 cv::Mat System::TrackStereo(const double t, const cv::Mat &img0,
                             const cv::Mat &img1) {
-  if (mpParams->msensor != mpParams->STEREO) {
+  if (SENSOR != Dvins::STEREO) {
     LOG(INFO) << "ERROR: you called TrackStereo but input sensor was not set "
                  "to Stereo."
               << endl;

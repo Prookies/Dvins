@@ -1,4 +1,5 @@
 #include "FeatureTracker.h"
+#include "ConfigParam.h"
 
 namespace Dvins {
 FeatureTracker::FeatureTracker() {
@@ -37,8 +38,18 @@ void FeatureTracker::setMask() {
       cur_pts.push_back(it.second.first);
       ids.push_back(it.second.second);
       track_cnt.push_back(it.first);
-      cv::circle(mask, it.second.first, min_dist, 0, -1)
+      cv::circle(mask, it.second.first, MIN_DIST, 0, -1);
     }
   }
+}
+
+map<int, vector<pair<int, Vector7d>>>
+FeatureTracker::trackImg(double _cur_time, const cv::Mat &_img0,
+                         const cv::Mat &_img1) {
+  // 对输入图像进行跟踪
+  cur_time = _cur_time;
+  cur_img = _img0;
+
+  cv::Mat rightImg = _img1;
 }
 }

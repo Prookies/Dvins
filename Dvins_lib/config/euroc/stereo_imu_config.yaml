@@ -1,9 +1,11 @@
 %YAML:1.0
 
+# sensor: 0: MONOCULAR 1: STEREO 2:RGBD
+sensor: 1
+
 #common parameters
 #support: 1 imu 1 cam; 1 imu 2 cam: 2 cam; 
-imu: 1         
-num_of_cam: 2  
+imu: 1
 
 imu_topic: "/imu0"
 image0_topic: "/cam0/image_raw"
@@ -65,6 +67,10 @@ g_norm: 9.81007     # gravity magnitude
 #unsynchronization parameters
 estimate_td: 0                      # online estimate time offset between camera and imu
 td: 0.0                             # initial value of time offset. unit: s. readed image clock + td = real image clock (IMU clock)
+
+#rolling shutter parameters
+rolling_shutter: 0                  # 0: global shutter camera, 1: rolling shutter camera
+rolling_shutter_tr: 0               # unit: s. rolling shutter read out time per frame (from data sheet). 
 
 #loop closure parameters
 loop_closure: 0
