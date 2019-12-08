@@ -10,7 +10,7 @@ imu: 1
 imu_topic: "/imu0"
 image0_topic: "/cam0/image_raw"
 image1_topic: "/cam1/image_raw"
-output_path: "~/MyProject/Test/output/Dvins"
+output_path: "~/Code/Test/Output/Dvins"
 
 cam0_calib: "cam0.yaml"
 cam1_calib: "cam1.yaml"
@@ -39,6 +39,56 @@ body_T_cam1: !!opencv-matrix
            0.999598781151, 0.0130119051815, 0.0251588363115, 0.0453689425024,
           -0.0253898008918, 0.0179005838253, 0.999517347078, 0.00786212447038,
           0, 0, 0, 1]
+#--------------------------------------------------------------------------------------------
+# Camera calibration and distortion parameters
+#--------------------------------------------------------------------------------------------
+LEFT.height: 480
+LEFT.width: 752
+LEFT.D: !!opencv-matrix
+   rows: 1
+   cols: 5
+   dt: d
+   data: [-0.28340811, 0.07395907, 0.00019359, 1.76187114e-05, 0.0]
+LEFT.K: !!opencv-matrix
+   rows: 3
+   cols: 3
+   dt: d
+   data: [458.654, 0.0, 367.215, 0.0, 457.296, 248.375, 0.0, 0.0, 1.0]
+# don't uderstand
+LEFT.R:  !!opencv-matrix
+   rows: 3
+   cols: 3
+   dt: d
+   data: [0.999966347530033, -0.001422739138722922, 0.008079580483432283, 0.001365741834644127, 0.9999741760894847, 0.007055629199258132, -0.008089410156878961, -0.007044357138835809, 0.9999424675829176]
+LEFT.P:  !!opencv-matrix
+   rows: 3
+   cols: 4
+   dt: d
+   data: [435.2046959714599, 0, 367.4517211914062, 0,  0, 435.2046959714599, 252.2008514404297, 0,  0, 0, 1, 0]
+   
+RIGHT.height: 480
+RIGHT.width: 752
+RIGHT.D: !!opencv-matrix
+   rows: 1
+   cols: 5
+   dt: d
+   data:[-0.28368365, 0.07451284, -0.00010473, -3.555907e-05, 0.0]
+RIGHT.K: !!opencv-matrix
+   rows: 3
+   cols: 3
+   dt: d
+   data: [457.587, 0.0, 379.999, 0.0, 456.134, 255.238, 0.0, 0.0, 1]
+# don't uderstand
+RIGHT.R:  !!opencv-matrix
+   rows: 3
+   cols: 3
+   dt: d
+   data: [0.9999633526194376, -0.003625811871560086, 0.007755443660172947, 0.003680398547259526, 0.9999684752771629, -0.007035845251224894, -0.007729688520722713, 0.007064130529506649, 0.999945173484644]
+RIGHT.P:  !!opencv-matrix
+   rows: 3
+   cols: 4
+   dt: d
+   data: [435.2046959714599, 0, 367.4517211914062, -47.90639384423901, 0, 435.2046959714599, 252.2008514404297, 0, 0, 0, 1, 0]
 
 
 #feature traker paprameters
@@ -50,7 +100,7 @@ show_track: 1           # publish tracking image as topic
 flow_back: 1            # perform forward and backward optical flow to improve feature tracking accuracy
 equalize: 1
 fisheye: 0
-fisheye_mask: ../config/fisheye_mask.jpg
+fisheye_mask: ./config/fisheye_mask.jpg
 
 #optimization parameters
 max_solver_time: 0.04  # max solver itration time (ms), to guarantee real time
@@ -58,8 +108,8 @@ max_num_iterations: 8   # max solver itrations, to guarantee real time
 keyframe_parallax: 10.0 # keyframe selection threshold (pixel)
 
 #imu parameters       The more accurate parameters you provide, the better performance
-acc_n: 0.1          # accelerometer measurement noise standard deviation. 
-gyr_n: 0.01         # gyroscope measurement noise standard deviation.     
+acc_n: 2.0000e-3          # accelerometer measurement noise standard deviation. 
+gyr_n: 1.6968e-04         # gyroscope measurement noise standard deviation.     
 acc_w: 0.001        # accelerometer bias random work noise standard deviation.  
 gyr_w: 0.0001       # gyroscope bias random work noise standard deviation.     
 g_norm: 9.81007     # gravity magnitude
@@ -75,5 +125,5 @@ rolling_shutter_tr: 0               # unit: s. rolling shutter read out time per
 #loop closure parameters
 loop_closure: 0
 load_previous_pose_graph: 0        # load and reuse previous pose graph; load from 'pose_graph_save_path'
-pose_graph_save_path: "~/MyProject/Test/output/Dvins/pose_graph/" # save and load path
+pose_graph_save_path: "~/Code/Test/Output/Dvins/pose_graph/" # save and load path
 save_image: 1                   # save image in pose graph for visualization prupose; you can close this function by setting 0 

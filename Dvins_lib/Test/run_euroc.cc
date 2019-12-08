@@ -1,5 +1,7 @@
-#include "Common.h"
-#include "System.h"
+#include "Estimator/System.h"
+#include "Utility/Common.h"
+#include "Utility/ConfigParam.h"
+#include "Utility/tic_toc.h"
 
 // -1: 退出程序；0: 程序停止执行；1：运行程序
 static int sigflag = 0;
@@ -19,11 +21,10 @@ static queue<pair<double, cv::Mat>> qImgs1;
 
 // 文件目录
 static string sDataPath = "/home/lab202/Dataset/EuRoc/MH-05/mav0";
-static string sConfigFile = "../config/euroc/stereo_imu_config.yaml";
-static string sVocFile = "../Vocabulary/brief_k10L6.bin";
+static string sConfigFile = "./config/euroc/stereo_imu_config.yaml";
+static string sVocFile = "./Vocabulary/brief_k10L6.bin";
 
 // 参数类以及SLAM系统
-static Dvins::ConfigParam *pParams;
 static Dvins::System *pSLAM;
 
 // 互斥锁
@@ -70,39 +71,34 @@ int main(int argc, char **argv) {
   LOG(INFO) << "ConfigFile = " << sConfigFile << endl;
 
   // sConfigFile是相对路径，其需要在要求的目录下打开才有效
-  pParams = new Dvins::ConfigParam(sConfigFile);
-  pSLAM = new Dvins::System(pParams);
+  pSLAM = new Dvins::System(sConfigFile);
 
   // 加载数据
   loadImus();
   loadImg();
   LOG(INFO) << "成功加载imu数据和img数据" << endl;
 
-  thread Thd_testSig(testSig);
+  //  thread Thd_testSig(testSig);
 
   // 发布数据
-  //  thread Thd_PubImuData(PubImuData);
-  //  thread Thd_PubImg0(PubImg0);
-  //  thread Thd_PubImg1(PubImg1);
+  PubImg0();
+  PubImg1();
+  PubImuData();
 
   // 接收数据
   //  thread Thd_ReceiveImg(ReceiveImg);
+  ReceiveImg();
 
   //  Thd_PubImuData.join();
   //  Thd_PubImg0.join();
   //  Thd_PubImg1.join();
   //  Thd_ReceiveImg.join();
-  Thd_testSig.join();
+  //  Thd_testSig.join();
 
   if (pSLAM) {
     delete pSLAM;
   }
   pSLAM = nullptr;
-
-  if (pParams) {
-    delete pParams;
-  }
-  pParams = nullptr;
 
   LOG(INFO) << "main end" << endl;
 
@@ -298,6 +294,7 @@ void PubImuData() {
       if (InterruptSig)
         break;
     }
+    cout << "发布的IMU数据数量为：" << qImus.size() << endl;
   }
 }
 /**
@@ -313,6 +310,7 @@ void PubImg0() {
       if (InterruptSig)
         break;
     }
+    cout << "发布的左目图像的数量为" << qImgs0.size() << endl;
   }
 }
 /**
@@ -328,6 +326,7 @@ void PubImg1() {
       if (InterruptSig)
         break;
     }
+    cout << "发布右目图像的数量为：" << qImgs1.size() << endl;
   }
 }
 
@@ -339,10 +338,12 @@ void ReceiveImu() {
     // TODO: 将接受到的IMU数据进行实时标定
     // TODO: 当机器人处于静止的时候，可以利用这段时间的IMU数据进行标定
     // 将imu数据输入到系统中
+    MutexBuf.lock();
     double t = qImus.front().first;
     Vector3d gry(qImus.front().second.first);
     Vector3d acc(qImus.front().second.second);
-    pSLAM->ProcessIMU(t, gry, acc);
+    MutexBuf.unlock();
+    pSLAM->InputIMU(t, gry, acc);
     if (InterruptSig)
       break;
   }
@@ -350,6 +351,8 @@ void ReceiveImu() {
 
 void ReceiveImg() {
   LOG(INFO) << "开始接收图像数据" << endl;
+  cv::Ptr<cv::FeatureDetector> detector = cv::ORB::create();
+  cv::Ptr<cv::DescriptorExtractor> descriptor = cv::ORB::create();
   while (1) {
     if (Dvins::SENSOR == Dvins::STEREO) {
       //            LOG(INFO) << "双目模式" << endl;
@@ -373,9 +376,6 @@ void ReceiveImg() {
           qImgs0.pop();
           img1 = qImgs1.front().second;
           qImgs1.pop();
-          //                cv::imshow("img0", img0);
-          //                cv::imshow("img1", img1);
-          //                cv::waitKey(0);
         }
 
       } else {
@@ -384,12 +384,71 @@ void ReceiveImg() {
       }
       MutexBuf.unlock();
 
-      if (!img0.empty() && !img1.empty())
-        pSLAM->ProcessStereoImg(timeStamp, img0, img1);
+      if (!img0.empty() && !img1.empty()) {
+        // 向slam系统输入图像数据
+        Mat imLeftRect, imRightRect;
+        TicToc t;
+        cv::remap(img0, imLeftRect, Dvins::M1l, Dvins::M2l, cv::INTER_LINEAR);
+        cv::remap(img1, imRightRect, Dvins::M1r, Dvins::M2r, cv::INTER_LINEAR);
+        LOG(INFO) << "remap处理时间为" << t.toc() << endl;
+        //        cv::imshow("imgLeft", imLeftRect);
+        //        cv::imshow("imgRight", imRightRect);
+        //        cv::waitKey(0);
+        // 特征匹配，检测是否特征点在平行线上
+        {
+
+          vector<cv::KeyPoint> kp1, kp2;
+          detector->detect(imLeftRect, kp1);
+          detector->detect(imRightRect, kp2);
+
+          // 计算描述子
+          Mat desp1, desp2;
+          descriptor->compute(imLeftRect, kp1, desp1);
+          descriptor->compute(imRightRect, kp2, desp2);
+
+          // 匹配描述子
+          vector<cv::DMatch> matches;
+          cv::BFMatcher matcher;
+          matcher.match(desp1, desp2, matches);
+          cout << "Find total " << matches.size() << " matches." << endl;
+
+          // 筛选匹配对
+          vector<cv::DMatch> goodMatches;
+          double minDis = 9999;
+          for (size_t i = 0; i < matches.size(); i++) {
+            if (matches[i].distance < minDis)
+              minDis = matches[i].distance;
+          }
+
+          for (size_t i = 0; i < matches.size(); i++) {
+            if (matches[i].distance < 10 * minDis)
+              goodMatches.push_back(matches[i]);
+          }
+
+          vector<cv::Point2f> pts1, pts2;
+          for (size_t i = 0; i < goodMatches.size(); i++) {
+            pts1.push_back(kp1[goodMatches[i].queryIdx].pt);
+            pts2.push_back(kp2[goodMatches[i].trainIdx].pt);
+            cout << "pts1:" << kp1[goodMatches[i].queryIdx].pt << endl;
+            cout << "pts2:" << kp2[goodMatches[i].trainIdx].pt << endl;
+          }
+
+          Mat img_goodmatch;
+          cv::drawMatches(imLeftRect, kp1, imRightRect, kp2, goodMatches,
+                          img_goodmatch);
+          cv::imshow("good matches", img_goodmatch);
+          cv::waitKey(0);
+        }
+        //        pSLAM->InputIMG(timeStamp, img0, img1);
+      } else {
+        LOG(ERROR) << "图像数据为空!" << endl;
+      }
     } else {
       // TODO: 其他模式有待开发
       usleep(1000);
     }
+    // 帧率为20，处理每帧的时间为50ms,则综合考虑可以等待5ms
+    usleep(5000);
 
     if (InterruptSig)
       break;
